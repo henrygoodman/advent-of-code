@@ -51,7 +51,6 @@ def part2():
         sections = line.strip().split(',')
         section1 = sections[0].split('-')
         section2 = sections[1].split('-')
-        print(section1, section2, overlap(section1, section2))
         if overlap(section1, section2):
             count += 1
     return count
