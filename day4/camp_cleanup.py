@@ -4,6 +4,9 @@ lines = file1.readlines()
 # Part 1
 
 def contains(section1, section2):
+    sizes = [int(section1[1]) - int(section1[0]) + 1, int(section2[1]) - int(section2[0]) + 1]
+    if sizes[0] == sizes[1]:
+        return False
     if section1[0] <= section2[0]:
         if section1[1] >= section2[1]:
             return True
