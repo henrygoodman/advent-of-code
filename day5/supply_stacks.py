@@ -2,9 +2,6 @@ import copy
 
 file1 = open('input.txt', 'r')
 lines = file1.readlines()
-
-# Manually store the input data in a 2d list, treat them as queues.
-# For some reason Python doesnt like copying lists (like with .copy() or list())
 stacks_original = [  ['N','D','M','Q','B','P','Z'],
                     ['C' ,'L' ,'Z' ,'Q' ,'M' ,'D' ,'H' ,'V'],
                     ['Q' ,'H' ,'R' ,'D' ,'V' ,'F' ,'Z' ,'G'],
@@ -15,9 +12,7 @@ stacks_original = [  ['N','D','M','Q','B','P','Z'],
                     ['M' ,'G' ,'F' ,'P' ,'N' ,'Q'],
                     ['B' ,'W' ,'R' ,'M']
                     ]
-
 # Part 1
-
 def part1():
     stacks = copy.deepcopy(stacks_original)
     for line in lines:
