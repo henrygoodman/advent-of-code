@@ -47,11 +47,13 @@ def part2():
         number = int(line[0])
         src = int(line[1])
         dst = int(line[2])
-        # To retain order, we need to push the entire sub-array
-        sub_stack = stacks2[src-1][-number:][::-1]
+        # To retain order, just pop twice using a temporary stack.
+        sub_stack = []
+        for _ in range(number):
+            sub_stack.append(stacks2[src-1].pop())
         for _ in range(number):
             stacks2[dst-1].append(sub_stack.pop())
-            stacks2[src-1].pop()
+
     ret = []
     for stack in stacks2:
         ret.append(stack[-1])
