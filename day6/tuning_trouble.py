@@ -3,7 +3,7 @@ lines = file1.readlines()
 
 def calc(n, line):
     for i in range(len(line)):
-        if len(set([line[i:i+n]])) == n:
+        if len(set(list([line[i:i+n]][0]))) == n:
             return i + n
 
 # Part 1
