@@ -9,12 +9,10 @@ def calc(n, line):
             return i + n
 
 def part1():
-    for line in lines:
-        return calc(4, line)
+    return calc(4, lines[0])
 
 # Part 2
 def part2():
-    for line in lines:
-        return calc(14, line)
+    return calc(14, lines[0])
 
 print(part1(), part2())
