@@ -2,5 +2,5 @@
 
 https://adventofcode.com/2022
 
-Tracking my solutions for the advent of code :) 
-Will probably be written all in Python
+Tracking my solutions for the advent of code 2022. 
+Will probably be written all in Python.
