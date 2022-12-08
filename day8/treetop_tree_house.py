@@ -6,7 +6,7 @@ lines = file1.readlines()
 grid = []
 
 # A point is visible if it is on an edge, or if it is taller than all trees between it and an edge.
-def visible(y, x):
+def visible(x, y):
     if (x == 0 or x == len(grid[0]) - 1 or y == 0 or y == len(lines) - 1):
         return True
 
@@ -40,7 +40,7 @@ def visible(y, x):
     return False
 
 # Any tree on an edge has a score of 0. Otherwise, count trees outwards until we reach a tree of greater height.
-def get_scenic_score(y, x):
+def get_scenic_score(x, y):
     if (x == 0 or x == len(grid[0]) - 1 or y == 0 or y == len(lines) - 1):
         return 0
 
@@ -79,7 +79,7 @@ def part1():
     
     for x in range(len(grid[0])):
         for y in range(len(lines)):
-            count += visible(x, y)
+            count += visible(y, x)
     return count
 
 # Part 2
@@ -87,7 +87,7 @@ def part2():
     scenic_scores = []
     for x in range(len(grid[0])):
         for y in range(len(lines)):
-            scenic_scores.append(get_scenic_score(x, y))
+            scenic_scores.append(get_scenic_score(y, x))
     return max(scenic_scores)
 
 print(part1(), part2())
