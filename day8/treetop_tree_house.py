@@ -10,38 +10,34 @@ def visible(y, x):
     if (x == 0 or x == len(grid[0]) - 1 or y == 0 or y == len(lines) - 1):
         return True
 
-    ret_val = True
     # Negative X direction
     for i in range(0, x):
         if (grid[y][x] <= grid[y][i]):
-            ret_val = False
-    if ret_val:
+            break
+    else:
         return True
 
     # Positive X direction
-    ret_val = True
     for i in range(x+1, len(grid[0])):
         if (grid[y][x] <= grid[y][i]):
-            ret_val = False
-    if ret_val:
+            break
+    else:
         return True
 
     # Positive Y direction
-    ret_val = True
     for i in range(0, y):
         if (grid[y][x] <= grid[i][x]):
-            ret_val = False
-    if ret_val:
+            break
+    else:
         return True
 
     # Negative Y direction
-    ret_val = True
     for i in range(y+1, len(lines)):
         if (grid[y][x] <= grid[i][x]):
-            ret_val = False
-    if ret_val:
+            break
+    else:
         return True
-    return ret_val
+    return False
 
 # Any tree on an edge has a score of 0. Otherwise, count trees outwards until we reach a tree of greater height.
 def get_scenic_score(y, x):
