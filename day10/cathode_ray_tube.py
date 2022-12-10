@@ -30,9 +30,9 @@ def check_status2(status):
     if (status[1] % 40 == 0):
         print('')
     if (status[0] == status[1] % 40 or status[0] - 1 == status[1] % 40 or status[0] + 1 == status[1] % 40):
-        print("#", end='')
+        print("█", end='')
     else:
-        print(".", end='')
+        print(" ", end='')
 
 # Part 2
 def part2():
