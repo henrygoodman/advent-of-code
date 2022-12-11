@@ -1,6 +1,5 @@
 file1 = open('input.txt', 'r')
 lines = file1.readlines()
-import re
 
 class Monkey():
     def __init__(self, num):
@@ -11,7 +10,6 @@ class Monkey():
         self.throws = []
         self.count = 0
 
-# Part 1
 def parse_monkeys():
     monkeys = []
     lcm = 1
@@ -36,11 +34,11 @@ def parse_monkeys():
         line_count += 1
     return monkeys, lcm
 
-def play_round(monkeys, n, lcm):
+def play_round(monkeys, n):
     for _ in range(n):
         for monkey in monkeys:
             for item in monkey.starting_items:
-                item = calculate_worry(monkey.operation.copy(), item, int(monkey.test)) // 3
+                item = calculate_worry(monkey.operation.copy(), item) // 3
                 monkey.count += 1
                 if (item % int(monkey.test) == 0):
                     get_monkey(int(monkey.throws[0]), monkeys).starting_items.append(item)
@@ -52,7 +50,7 @@ def play_round2(monkeys, n, lcm):
     for _ in range(n):
         for monkey in monkeys:
             for item in monkey.starting_items:
-                item = calculate_worry(monkey.operation.copy(), item, int(monkey.test)) % lcm
+                item = calculate_worry(monkey.operation.copy(), item) % lcm
                 monkey.count += 1
                 if (item % int(monkey.test) == 0):
                     get_monkey(int(monkey.throws[0]), monkeys).starting_items.append(item)
@@ -60,7 +58,7 @@ def play_round2(monkeys, n, lcm):
                     get_monkey(int(monkey.throws[1]), monkeys).starting_items.append(item)
             monkey.starting_items = []
 
-def calculate_worry(op, item, test):
+def calculate_worry(op, item):
     current_worry = item
     if op[1] == 'old':
         op[1] = item
@@ -76,15 +74,14 @@ def get_monkey(n, monkeys):
             return monkey
 
 def part1():
-    monkeys, lcm = parse_monkeys()
-    play_round(monkeys, 20, lcm)
+    monkeys, _ = parse_monkeys()
+    play_round(monkeys, 20)
     counts = []
     for m in monkeys:
         counts.append(m.count)
     counts.sort()
     return counts[-1] * counts[-2]
 
-# Part 2
 def part2():
     monkeys, lcm = parse_monkeys()
     play_round2(monkeys, 10000, lcm)
