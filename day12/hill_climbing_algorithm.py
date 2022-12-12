@@ -1,9 +1,6 @@
 file1 = open('input.txt', 'r')
 lines = file1.readlines()
-import sys
-sys.setrecursionlimit(100000)
 
-# Part 1
 grid = []
 start = []
 end = []
@@ -20,16 +17,13 @@ def bfs(start, end):
                 new_path.append(c)
                 queue.append(new_path)
                 if (c == end):
-                    print(len(new_path) - 1)
                     return len(new_path) - 1
             visited.append(node)
-    print("No path.")
     return 9999999999999
         
 def get_choices(pos):
     choices = []
     y, x = pos
-    # print(pos, ord(grid[y][x]))
     if pos[1] > 0 and (ord(grid[y][x - 1]) -1 <= ord(grid[y][x])) and (y, x - 1):
         choices.append(tuple([y, x - 1]))
     if pos[1] < len(grid[0]) - 1 and (ord(grid[y][x + 1]) -1 <= ord(grid[y][x])) and (y, x + 1):
@@ -39,10 +33,6 @@ def get_choices(pos):
     if pos[0] < len(grid) - 1 and (ord(grid[y + 1][x]) -1 <= ord(grid[y][x])) and (y + 1, x):
         choices.append(tuple([y + 1, x]))
     return choices
-
-def show_grid():
-    for line in grid:
-        print(line)
 
 # Part 1
 def part1():
@@ -66,8 +56,7 @@ def part2():
             if grid[y][x] == 'a':
                 starting_positions.append(tuple([y, x]))
     min_len = 9999999999
-    for idx, s in enumerate(starting_positions[0:]):
-        print(s, str(len(starting_positions) - idx) + " remaining.")
+    for s in starting_positions:
         leng = bfs(s, end)
         if leng < min_len:
             min_len = leng
