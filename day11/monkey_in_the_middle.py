@@ -22,14 +22,14 @@ def parse_monkeys():
             num = line.split(' ')[1].split(':')[0]
             current_monkey = Monkey(num)
             monkeys.append(current_monkey)
-        if line_count == 1:
+        elif line_count == 1:
             current_monkey.starting_items = [int(s) for s in line.replace(',', '').split() if s.isdigit()]
-        if line_count == 2:
+        elif line_count == 2:
             current_monkey.operation = line.split()[-2:]
-        if line_count == 3:
+        elif line_count == 3:
             current_monkey.test = [int(s) for s in line.replace(',', '').split() if s.isdigit()][0]
             lcm *= current_monkey.test
-        if line_count == 4 or line_count == 5:
+        elif line_count == 4 or line_count == 5:
             current_monkey.throws.append([int(s) for s in line.replace(',', '').split() if s.isdigit()][0])
         line_count += 1
     return monkeys, lcm
