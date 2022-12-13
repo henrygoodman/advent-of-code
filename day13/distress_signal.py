@@ -28,13 +28,15 @@ def compare(p, q):
                 flag = True
                 return flag
         elif isinstance(p[i], list) and isinstance(q[i], list):
-            compare(p[i].copy(), q[i].copy())
+            compare(p[i], q[i])
         else:
             if isinstance(p[i], int):
-                p[i] = [p[i]]
+                new_p = [p[i]]
+                new_q = q[i]
             else:
-                q[i] = [q[i]]
-            compare(p[i:], q[i:])
+                new_p = p[i]
+                new_q = [q[i]]
+            compare(new_p, new_q)
         if flag is not None:
             return flag
     return False
@@ -54,7 +56,7 @@ def part1():
     count = 0
     for idx, p in enumerate(pairs):
         flag = None
-        count += compare(p[0].copy(), p[1].copy()) * (idx + 1)
+        count += compare(p[0], p[1]) * (idx + 1)
     return count
 
 # Part 2
@@ -78,7 +80,7 @@ def part2():
         is_sorted = True
         for i in range(len(all_pairs) - 1):
             flag = None
-            if not compare(all_pairs[i].copy(), all_pairs[i+1].copy()):
+            if not compare(all_pairs[i], all_pairs[i+1]):
                 all_pairs[i], all_pairs[i+1] = all_pairs[i+1], all_pairs[i]
                 is_sorted = False
             if all_pairs[i] == [[2]]:
