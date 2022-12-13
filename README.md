@@ -9,3 +9,5 @@ Skills Learned:
 - Class construction, repr methods useful for visualization (multiple days)
 - List comprehensions (multiple days)
 - BFS pathfinding algorithm (day12)
+- Input parsing nested lists using json
+- Bubble sort using custom comparison method between nested list data structures.
