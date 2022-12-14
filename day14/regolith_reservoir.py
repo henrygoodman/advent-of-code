@@ -65,7 +65,7 @@ def init_cave(void):
                 max_y = int(inst[1])
 
     # Initialise the 2d list using dimensions.
-    cave = Cave(max_x, min_x, 2 + max_y, 2 * max_x + 1)
+    cave = Cave(max_x, min_x, 2 + max_y, 2 * max_y + 1)
 
     # Set the rocks
     for l in lines:
