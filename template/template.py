@@ -1,5 +1,5 @@
-file1 = open('input.txt', 'r')
-lines = file1.readlines()
+with open('input.txt', 'r') as file:
+    lines = file.readlines()
 
 # Part 1
 
